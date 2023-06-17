@@ -1,0 +1,48 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body, #system-bar {
+  // 解决electron无边框导致无法拖动窗口
+  -webkit-app-region: drag;
+}
+
+#traffic-lights {
+  // 解决点击事件失效
+  -webkit-app-region: no-drag;
+}
+
+//双伪元素实现清除浮动
+.clearFloat {
+  &::after,
+  &::before {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+
+// #app {
+//   &::-webkit-scrollbar {
+//     width: 0px;
+//   }
+// }
+
+// *::-webkit-scrollbar {
+//   width: 3px;
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   background: $purplish_gray;
+//   border-radius: 3px;
+// }
+
+// *::-webkit-scrollbar-corner {
+//   background-color: transparent;
+// }
