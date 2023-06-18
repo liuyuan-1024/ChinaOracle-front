@@ -69,7 +69,6 @@
         justify-content: space-around;
         align-items: center;
         float: left;
-        // width: $nav_bar_width;
 
         #main-bar {
             display: flex;

@@ -7,7 +7,7 @@ import App from './App.vue';
 import './styles/reset.scss';
 import './styles/global.scss';
 //引入全局组件 SymbolIcon
-import SymbolIcon from '@/components/symbolIcon/SymbolIcon.vue';
+import SymbolIcon from '@/components/SymbolIcon.vue';
 
 
 const app = createApp(App);
