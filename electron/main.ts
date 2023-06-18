@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain, Menu, Tray } from 'electron';
+// @ts-ignore
 import path from 'path';
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
