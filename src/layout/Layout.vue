@@ -36,7 +36,6 @@
 
 <style scoped>
     #layout {
-        color: #9994ba; /* 全局字体颜色 */
         width: 100vw;
         height: 100vh;
         padding: 3px 8px 8px;

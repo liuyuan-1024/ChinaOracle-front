@@ -1,7 +1,11 @@
+@import "reset";
+@import "common";
+
 body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  color: $font-color;
 }
 
 #system-bar {
