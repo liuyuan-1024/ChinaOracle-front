@@ -4,7 +4,7 @@ body {
   overflow: hidden;
 }
 
-body, #system-bar {
+#system-bar {
   // 解决electron无边框导致无法拖动窗口
   -webkit-app-region: drag;
 }
