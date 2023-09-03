@@ -14,10 +14,6 @@
     }>();
 
     function handClick() {
-        if (props.title) {
-            // todo 修改系统栏的标题
-        }
-
         if (props.to) {
             RouterUtils.push(props.to);
         }
@@ -40,7 +36,7 @@
             content: attr(data-title);
             position: absolute;
             left: 100%;
-            font-size: 7px;
+            font-size: 12px;
             color: #9994ba;
             background-color: #2e2b43;
             border-radius: 3px;
