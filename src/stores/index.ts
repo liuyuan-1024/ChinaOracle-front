@@ -12,7 +12,6 @@ export const LoginUserStore = defineStore('LoginUserStore', {
     // 推荐使用 完整类型推断的箭头函数
     // state是store的初始状态
     state: () => {
-
         let loginUser: LoginUser = {
             id: -1,
             email: '',
@@ -21,7 +20,6 @@ export const LoginUserStore = defineStore('LoginUserStore', {
             profile: '',
             token: ''
         };
-
         return loginUser;
     },
 
@@ -29,7 +27,6 @@ export const LoginUserStore = defineStore('LoginUserStore', {
 
     // 注意：actions中不推荐使用箭头函数，因为箭头函数的this是绑定了外部的this，而非store的this
     actions: {
-
         changeState(currentUser: LoginUser) {
             this.id = currentUser.id;
             this.email = currentUser.email;
@@ -37,6 +34,25 @@ export const LoginUserStore = defineStore('LoginUserStore', {
             this.avatar = currentUser.avatar;
             this.profile = currentUser.profile;
             this.token = currentUser.token;
+        }
+    }
+});
+
+export const SystemBarStore = defineStore('LoginUserStore', {
+    // 推荐使用 完整类型推断的箭头函数
+    // state是store的初始状态
+    state: () => {
+        return {
+            systemBarTitle: ''
+        };
+    },
+
+    getters: {},
+
+    // 注意：actions中不推荐使用箭头函数，因为箭头函数的this是绑定了外部的this，而非store的this
+    actions: {
+        changeState(title: string) {
+            this.systemBarTitle = title;
         }
     }
 });

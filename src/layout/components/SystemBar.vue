@@ -6,10 +6,12 @@
     };
 </script>
 
-<script lang='ts' setup></script>
+<script lang='ts' setup>
+    import { SystemBarStore } from '@/stores';
+</script>
 
 <template>
-    <div id='system-bar'>标题标题标题标题标题标题标题</div>
+    <div id='system-bar'>{{ SystemBarStore().systemBarTitle }}</div>
 </template>
 
 <style lang='scss' scoped>

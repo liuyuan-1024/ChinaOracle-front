@@ -6,6 +6,7 @@ import WorldView from '@/views/world/World.vue';
 import MineView from '@/views/mine/Mine.vue';
 import Error404 from '@/views/error/404.vue';
 import Error500 from '@/views/error/500.vue';
+import { SystemBarStore } from '@/stores';
 
 const routes = [
     {
@@ -67,11 +68,12 @@ const router = createRouter({
 // next:函数, 用于放行路由, 也能入参,可以改变放行路径
 router.beforeEach((to, from, next) => {
     // 判断to是否需要权限
-    if (to.meta.auth) {
-        // 需要权限
+    if (to.meta.auth) { // 需要权限
+        // 修改系统栏标题
+        SystemBarStore().changeState(String(to.meta.title));
         next();
-    } else {
-        // 不需要权限
+    } else { // 不需要权限
+
         next();
     }
 });
