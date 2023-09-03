@@ -15,8 +15,8 @@ export default class RouterUtils {
         }
     }
 
-    // 返回当前路由路径
-    static currentRouter(): string {
+    // 返回当前路由的fullPath
+    static getCurrentRouterPath(): string {
         return router.currentRoute.value.fullPath;
     }
 }
