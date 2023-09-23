@@ -48,7 +48,7 @@ function createWindow() {
     });
 
     // 加载 index.html
-    if (process.env.NODE_ENV !== 'development') {
+    if (process.env.VITE_USER_NODE_ENV !== 'development') {
         mainWindow.loadFile(path.join(__dirname, '../dist/index.html')).then();
     } else {
         mainWindow

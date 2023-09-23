@@ -7,11 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Message: typeof import('./src/components/naive/Message.vue')['default']
-    NaiveMessage: typeof import('./src/components/naive/message/NaiveMessage.vue')['default']
-    NButton: typeof import('naive-ui')['NButton']
-    NMessageProvider: typeof import('naive-ui')['NMessageProvider']
-    NSpace: typeof import('naive-ui')['NSpace']
     Option: typeof import('./src/components/Option.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

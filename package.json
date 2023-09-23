@@ -2,10 +2,12 @@
   "name": "chinaoracle",
   "private": true,
   "version": "0.0.0",
+  "author": "liuyuan-1024",
+  "description": "Code for Ancient Spirit and Monster",
   "main": "dist-electron/main.js",
   "scripts": {
     "dev": "vite --mode development",
-    "test": "vite --mode test",
+    "release": "vite --mode release",
     "build": "vue-tsc && vite build &&electron-builder",
     "preview": "vite preview"
   },
