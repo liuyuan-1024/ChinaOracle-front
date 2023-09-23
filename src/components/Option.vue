@@ -29,6 +29,7 @@
 
 <style lang='scss' scoped>
     #menu-item {
+        display: inline;
         position: relative;
         cursor: pointer;
 
