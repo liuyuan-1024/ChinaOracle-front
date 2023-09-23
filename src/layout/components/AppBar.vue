@@ -11,7 +11,12 @@
 <template>
     <div id='app-bar'>
         <div></div>
-        <div></div>
+        <!-- 搜索框 -->
+        <n-input round placeholder="搜索">
+            <template #prefix>
+                <SymbolIcon size='12' name='searching' />
+            </template>
+        </n-input>
         <div></div>
         <img src='@/assets/images/avatar.jpg' alt='' class='avatar' />
     </div>
@@ -27,5 +32,9 @@
         .avatar {
             border-radius: 10px;
         }
+    }
+
+    :deep(.n-input__input-el){
+        height: 100%;
     }
 </style>
