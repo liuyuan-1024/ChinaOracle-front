@@ -1,4 +1,4 @@
-<!-- 系统状态栏 -->
+<!-- 系统状态栏 TODO 进度条，在加载完成后显示标题 -->
 
 <script lang='ts'>
     export default {
