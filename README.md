@@ -1,7 +1,10 @@
 # ChinaOracle
 
-> ChinaOracle 古灵精怪的 code 记录创意代码 代码也可以很有趣前端使用 vue3 + ts +
-> sass + naive-ui
+> ChinaOracle 古灵精怪的 code 记录创意代码 代码也可以很有趣
+
+> 世界页面：搜集编程的前沿消息（最好是搜集一些相关的权威网站），将其上面的信息转载到我们的软件上,这样当我们想获取一些编程前沿消息时就不必在各个网站来回跳转了
+
+> 前端使用 vue3 + ts + sass + naive-ui
 > axios 作为前后端的通信工具后端使用 Java（SpringBoot）
 
 ## UI 设计
