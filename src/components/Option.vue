@@ -43,6 +43,7 @@
             border-radius: 3px;
             width: max-content;
             padding: 3px;
+            z-index: 999;
         }
     }
 </style>
