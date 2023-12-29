@@ -1,1 +1,21 @@
-"use strict";const t=require("electron");window.addEventListener("DOMContentLoaded",()=>{const n=(e,r)=>{const o=document.getElementById(e);o&&(o.innerText=r)};for(const e of["chrome","node","electron"])n(`${e}-version`,process.versions[e])});t.contextBridge.exposeInMainWorld("ipcRenderer",{send:(n,e)=>{t.ipcRenderer.send(n,e)},on:(n,e)=>{t.ipcRenderer.on(n,(r,...o)=>e(...o))}});
+"use strict";
+const electron = require("electron");
+window.addEventListener("DOMContentLoaded", () => {
+  const replaceText = (selector, text) => {
+    const element = document.getElementById(selector);
+    if (element) {
+      element.innerText = text;
+    }
+  };
+  for (const type of ["chrome", "node", "electron"]) {
+    replaceText(`${type}-version`, process.versions[type]);
+  }
+});
+electron.contextBridge.exposeInMainWorld("ipcRenderer", {
+  send: (channel, data) => {
+    electron.ipcRenderer.send(channel, data);
+  },
+  on: (channel, func) => {
+    electron.ipcRenderer.on(channel, (event, ...args) => func(...args));
+  }
+});

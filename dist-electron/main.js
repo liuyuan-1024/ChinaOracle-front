@@ -1,2 +1,100 @@
-"use strict";const s=require("electron"),t=require("path");process.env.ELECTRON_DISABLE_SECURITY_WARNINGS="true";let e,o;const c=s.Menu.buildFromTemplate([{label:"显示窗口",click:()=>{e==null||e.show()}},{label:"最小化",click:()=>{e==null||e.minimize()}},{label:"退出",click:()=>{process.platform!=="darwin"&&s.app.quit()}}]);function i(){e=new s.BrowserWindow({frame:!1,resizable:!0,width:1024,height:720,backgroundColor:"#2e2b43",icon:t.join(__dirname,"../public/favicon.ico"),webPreferences:{nodeIntegration:!0,preload:t.join(__dirname,"preload.js")}}),process.env.VITE_USER_NODE_ENV!=="development"?e.loadFile(t.join(__dirname,"../dist/index.html")).then():(e.loadURL(`${process.env.VITE_DEV_SERVER_URL}:
-                            ${process.env.VITE_DEV_SERVER_PORT}`).then(),e.webContents.openDevTools())}function l(){o=new s.Tray(t.join(__dirname,"../public/favicon.ico")),o.setToolTip("ChinaOracle"),o.setContextMenu(c)}s.app.whenReady().then(()=>{i(),l(),e==null||e.webContents.session.webRequest.onBeforeSendHeaders((r,n)=>{n({requestHeaders:{Origin:"*",...r.requestHeaders}})}),e==null||e.webContents.session.webRequest.onHeadersReceived((r,n)=>{n({responseHeaders:{"Access-Control-Allow-Origin":["*"],...r.responseHeaders}})}),s.app.on("activate",function(r){s.BrowserWindow.getAllWindows().length===0&&i()}),o==null||o.on("click",function(){e==null||e.show()})});s.app.on("ready",()=>{s.ipcMain.on("minimize-window",()=>{e==null||e.minimize()}),s.ipcMain.on("maximize-window",()=>{e!=null&&e.isMaximized()?e==null||e.unmaximize():e==null||e.maximize()}),s.ipcMain.on("close-window",r=>{r.preventDefault(),e==null||e.hide()})});
+"use strict";
+const electron = require("electron");
+const path = require("path");
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true";
+let mainWindow;
+let tray;
+const trayMenu = electron.Menu.buildFromTemplate([
+  {
+    label: "显示窗口",
+    click: () => {
+      mainWindow == null ? void 0 : mainWindow.show();
+    }
+  },
+  {
+    label: "最小化",
+    click: () => {
+      mainWindow == null ? void 0 : mainWindow.minimize();
+    }
+  },
+  {
+    label: "退出",
+    click: () => {
+      if (process.platform !== "darwin") {
+        electron.app.quit();
+      }
+    }
+  }
+]);
+function createWindow() {
+  mainWindow = new electron.BrowserWindow({
+    frame: false,
+    resizable: true,
+    width: 1024,
+    // 实际W=1400
+    height: 720,
+    // 实际H=1000
+    backgroundColor: "#2e2b43",
+    icon: path.join(__dirname, "../public/favicon.ico"),
+    webPreferences: {
+      nodeIntegration: true,
+      preload: path.join(__dirname, "preload.js")
+    }
+  });
+  if (process.env.VITE_USER_NODE_ENV !== "development") {
+    mainWindow.loadFile(path.join(__dirname, "../dist/index.html")).then();
+  } else {
+    mainWindow.loadURL(`${process.env["VITE_DEV_SERVER_URL"]}:
+                            ${process.env["VITE_DEV_SERVER_PORT"]}`).then();
+    mainWindow.webContents.openDevTools();
+  }
+}
+function createTray() {
+  tray = new electron.Tray(path.join(__dirname, "../public/favicon.ico"));
+  tray.setToolTip("ChinaOracle");
+  tray.setContextMenu(trayMenu);
+}
+electron.app.whenReady().then(() => {
+  createWindow();
+  createTray();
+  mainWindow == null ? void 0 : mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
+    (details, callback) => {
+      callback({
+        requestHeaders: { Origin: "*", ...details.requestHeaders }
+      });
+    }
+  );
+  mainWindow == null ? void 0 : mainWindow.webContents.session.webRequest.onHeadersReceived(
+    (details, callback) => {
+      callback({
+        responseHeaders: {
+          "Access-Control-Allow-Origin": ["*"],
+          ...details.responseHeaders
+        }
+      });
+    }
+  );
+  electron.app.on("activate", function(e) {
+    if (electron.BrowserWindow.getAllWindows().length === 0)
+      createWindow();
+  });
+  tray == null ? void 0 : tray.on("click", function() {
+    mainWindow == null ? void 0 : mainWindow.show();
+  });
+});
+electron.app.on("ready", () => {
+  electron.ipcMain.on("minimize-window", () => {
+    mainWindow == null ? void 0 : mainWindow.minimize();
+  });
+  electron.ipcMain.on("maximize-window", () => {
+    if (mainWindow == null ? void 0 : mainWindow.isMaximized()) {
+      mainWindow == null ? void 0 : mainWindow.unmaximize();
+    } else {
+      mainWindow == null ? void 0 : mainWindow.maximize();
+    }
+  });
+  electron.ipcMain.on("close-window", (ev) => {
+    ev.preventDefault();
+    mainWindow == null ? void 0 : mainWindow.hide();
+  });
+});

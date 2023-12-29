@@ -4,8 +4,7 @@
 
 > 世界页面：搜集编程的前沿消息（最好是搜集一些相关的权威网站），将其上面的信息转载到我们的软件上,这样当我们想获取一些编程前沿消息时就不必在各个网站来回跳转了
 
-> 前端使用 vue3 + ts + sass + naive-ui
-> axios 作为前后端的通信工具后端使用 Java（SpringBoot）
+> 前端使用 vue3 + ts + sass + naive-ui axios 作为前后端的通信工具后端使用 Java（SpringBoot）
 
 ## UI 设计
 
@@ -19,8 +18,7 @@
 
 > unplugin-auto-import 插件来自动导入 API
 >
-> unplugin-vue-components 插件来按需自动加载组件，插件会自动解析模板中的使用到的组件，
-> 并导入组件。
+> unplugin-vue-components 插件来按需自动加载组件，插件会自动解析模板中的使用到的组件，并导入组件。
 >
 > 安装这两个插件:
 >
@@ -31,35 +29,34 @@
 ```ts
 // 配置插件
 // vite.config.ts
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import AutoImport from 'unplugin-auto-import/vite';
-import Components from 'unplugin-vue-components/vite';
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [
-        vue(),
-        AutoImport({
-            imports: [
-                'vue',
-                {
-                    'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
-                },
-            ],
-        }),
-        Components({
-            resolvers: [NaiveUiResolver()],
-        }),
-    ],
-});
+  plugins: [
+    vue(),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'],
+        },
+      ],
+    }),
+    Components({
+      resolvers: [NaiveUiResolver()],
+    }),
+  ],
+})
 ```
 
 ## icon 图标
 
-- iconfont 的 stack 项目
-  <https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.22&manage_type=myprojects&projectId=3628784&keyword=&project_type=&page=>
+- iconfont 的 stack 项目 <https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.22&manage_type=myprojects&projectId=3628784&keyword=&project_type=&page=>
 
 - 采用 symbol 方式引入，并且自定义 symbol icon 组件
 
@@ -86,8 +83,7 @@ export default defineConfig({
 
 ## 未解决问题
 
-> 记得安装 Electron DevTools Installer
-> <https://github.com/MarshallOfSound/electron-devtools-installer>
+> 记得安装 Electron DevTools Installer <https://github.com/MarshallOfSound/electron-devtools-installer>
 >
 > 1. 生产构建时会有部分静态资源无法打包
 >

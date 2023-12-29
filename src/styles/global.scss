@@ -1,5 +1,5 @@
-@import "reset";
-@import "common";
+@import 'reset';
+@import 'common';
 
 body {
   width: 100vw;
@@ -30,7 +30,6 @@ body {
     clear: both;
   }
 }
-
 
 // #app {
 //   &::-webkit-scrollbar {
